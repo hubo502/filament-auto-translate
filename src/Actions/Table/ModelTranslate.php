@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions\Table;
 
 use Darko\FilamentAutoTranslate\Jobs\TranslateModel as TranslateModelJob;
@@ -16,7 +17,7 @@ class ModelTranslate extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Translate");
+        $this->label('Translate');
         $this->icon('heroicon-s-language');
         $this->action(function (Model $record) {
             static::run($record);
@@ -28,5 +29,4 @@ class ModelTranslate extends Action
     {
         TranslateModelJob::dispatch($record);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 return [
     'trans_functions' => [
         'trans',

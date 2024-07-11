@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions;
 
 use Darko\FilamentAutoTranslate\Services\LangManager;
@@ -7,7 +8,6 @@ use Filament\Notifications\Notification;
 
 class LangPublish extends Action
 {
-
     public static function make(?string $name = 'lang-publish'): static
     {
         return parent::make($name);
@@ -16,7 +16,7 @@ class LangPublish extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Publish");
+        $this->label('Publish');
         $this->icon('heroicon-o-printer');
         $this->action(function () {
             static::run();

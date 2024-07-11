@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Services\Concerns;
 
 use Darko\AutoTranslate\Models\LanguageLine;
@@ -9,7 +10,7 @@ trait CanDiscoverLang
 {
     public static function discover()
     {
-        return static::discoverFromFiles()+static::discoverFromSettings()+static::discoverFromEnums();
+        return static::discoverFromFiles() + static::discoverFromSettings() + static::discoverFromEnums();
 
     }
 
@@ -58,17 +59,18 @@ trait CanDiscoverLang
                 });
             }
         });
+
         return $count;
     }
 
-    public static function discoverFromFiles(string $path = null): int
+    public static function discoverFromFiles(?string $path = null): int
     {
 
         $path = $path ?: base_path();
 
         $groupKeys = [];
         $stringKeys = [];
-        $functions = config("lang-manager.trans_functions");
+        $functions = config('lang-manager.trans_functions');
 
         $groupPattern = // See https://regex101.com/r/WEJqdL/6
         "[^\w|>]" . // Must not have an alphanum or _ or > before real method
@@ -114,7 +116,7 @@ trait CanDiscoverLang
                     //TODO: This can probably be done in the regex, but I couldn't do it.
                     //skip keys which contain namespacing characters, unless they also contain a
                     //space, which makes it JSON.
-                    if (!(Str::contains($key, '::') && Str::contains($key, '.')) || Str::contains($key, ' ')) {
+                    if (! (Str::contains($key, '::') && Str::contains($key, '.')) || Str::contains($key, ' ')) {
                         $stringKeys[] = $key;
                     }
                 }
@@ -127,7 +129,7 @@ trait CanDiscoverLang
 
         foreach ($groupKeys as $key) {
             // Split the group and item
-            list($group, $item) = explode('.', $key, 2);
+            [$group, $item] = explode('.', $key, 2);
             static::missingKey($group, $item);
         }
 
@@ -146,5 +148,4 @@ trait CanDiscoverLang
         LanguageLine::getByBaseValue($key, $group);
 
     }
-
 }

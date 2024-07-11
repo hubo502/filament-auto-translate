@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions;
 
 use Darko\FilamentAutoTranslate\Services\LangManager;
@@ -15,7 +16,7 @@ class LangDiscover extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Discover");
+        $this->label('Discover');
         $this->icon('heroicon-o-magnifying-glass-circle');
         $this->action(function () {
             static::run();

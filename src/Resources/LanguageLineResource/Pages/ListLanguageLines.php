@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Resources\LanguageLineResource\Pages;
 
 use Darko\FilamentAutoTranslate\Actions\LangDiscover;
@@ -12,6 +13,7 @@ use LanguageLineResource;
 class ListLanguageLines extends ListRecords
 {
     use Translatable;
+
     protected static string $resource = LanguageLineResource::class;
 
     public function getTranslationPreview($record, $maxLength = null)
@@ -30,7 +32,7 @@ class ListLanguageLines extends ListRecords
     {
         return [
             LocaleSwitcher::make(),
-            CreateAction::make("create")->outlined(),
+            CreateAction::make('create')->outlined(),
             LangDiscover::make(),
             LangTranslate::make(),
             LangPublish::make(),

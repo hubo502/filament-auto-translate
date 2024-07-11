@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Jobs;
 
 use Darko\AutoTranslate\Models\LanguageLine;
@@ -9,25 +10,26 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class TranslateLanguageLine implements ShouldQueue, ShouldBeUnique
+class TranslateLanguageLine implements ShouldBeUnique, ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public $uniqueFor = 3600;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(public LanguageLine $languageLine)
-    {
-    }
+    public function __construct(public LanguageLine $languageLine) {}
 
     /**
      * Execute the job.
      */
     public function handle(): void
     {
-        if (!$this->languageLine->translateCompleted()) {
+        if (! $this->languageLine->translateCompleted()) {
             $this->languageLine->translate();
         }
     }

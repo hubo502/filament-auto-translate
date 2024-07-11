@@ -23,18 +23,21 @@ class LanguageLineResource extends Resource
     use Translatable;
 
     protected static ?string $model = LanguageLine::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
+
     protected static ?string $slug = 'translation-manager';
+
     protected static ?string $navigationGroup = 'Plugins';
 
     public static function getLabel(): ?string
     {
-        return "Translation";
+        return 'Translation';
     }
 
     public static function getPluralLabel(): ?string
     {
-        return "Translations";
+        return 'Translations';
     }
 
     public static function form(Form $form): Form
@@ -45,7 +48,7 @@ class LanguageLineResource extends Resource
                     ->prefixIcon('heroicon-o-tag')
                     ->label('Group')
                     ->required()
-                    ->options(['_json' => '全局', '_cache' => '缓存'])->default("_json"),
+                    ->options(['_json' => '全局', '_cache' => '缓存'])->default('_json'),
 
                 TextInput::make('key')
                     ->prefixIcon('heroicon-o-key')
@@ -62,10 +65,10 @@ class LanguageLineResource extends Resource
     {
         return $table->columns(static::getColumns())->paginated([50, 100])
             ->defaultPaginationPageOption(50)->actions([
-            TranslateLang::make()->iconButton(),
-            EditAction::make()->iconButton(),
-            DeleteAction::make()->iconButton(),
-        ]);
+                TranslateLang::make()->iconButton(),
+                EditAction::make()->iconButton(),
+                DeleteAction::make()->iconButton(),
+            ]);
     }
 
     public static function getColumns(): array
@@ -74,7 +77,7 @@ class LanguageLineResource extends Resource
 
         $columns = [
             TextColumn::make('group_and_key')
-                ->label("Group & Key")
+                ->label('Group & Key')
                 ->searchable(['group', 'key'])
                 ->wrap()
                 ->getStateUsing(function (LanguageLine $line) {
@@ -110,7 +113,7 @@ class LanguageLineResource extends Resource
     public static function getPages(): array
     {
         return [
-            "index" => ListLanguageLines::route("/"),
+            'index' => ListLanguageLines::route('/'),
         ];
     }
 }
