@@ -1,26 +1,24 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Darko\FilamentAutoTranslate;
 
-use Filament\Support\Assets\AlpineComponent;
+use Darko\FilamentAutoTranslate\Commands\FilamentAutoTranslateCommand;
+use Darko\FilamentAutoTranslate\Testing\TestsFilamentAutoTranslate;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
-use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
-use VendorName\Skeleton\Testing\TestsSkeleton;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class FilamentAutoTranslateServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament-auto-translate';
 
-    public static string $viewNamespace = 'skeleton';
+    public static string $viewNamespace = 'filament-auto-translate';
 
     public function configurePackage(Package $package): void
     {
@@ -33,32 +31,15 @@ class SkeletonServiceProvider extends PackageServiceProvider
             ->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
-                    ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+                    ->publishConfigFile();
             });
 
-        $configFileName = $package->shortName();
+        $package->hasConfigFile('lang-manager');
 
-        if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
-            $package->hasConfigFile();
-        }
-
-        if (file_exists($package->basePath('/../database/migrations'))) {
-            $package->hasMigrations($this->getMigrations());
-        }
-
-        if (file_exists($package->basePath('/../resources/lang'))) {
-            $package->hasTranslations();
-        }
-
-        if (file_exists($package->basePath('/../resources/views'))) {
-            $package->hasViews(static::$viewNamespace);
-        }
     }
 
-    public function packageRegistered(): void {}
+    public function packageRegistered(): void
+    {}
 
     public function packageBooted(): void
     {
@@ -76,22 +57,13 @@ class SkeletonServiceProvider extends PackageServiceProvider
         // Icon Registration
         FilamentIcon::register($this->getIcons());
 
-        // Handle Stubs
-        if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
-                $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
-            }
-        }
-
         // Testing
-        Testable::mixin(new TestsSkeleton());
+        Testable::mixin(new TestsFilamentAutoTranslate());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'darko/filament-auto-translate';
     }
 
     /**
@@ -100,9 +72,9 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/skeleton.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/skeleton.js'),
+            // AlpineComponent::make('filament-auto-translate', __DIR__ . '/../resources/dist/components/filament-auto-translate.js'),
+            Css::make('filament-auto-translate-styles', __DIR__ . '/../resources/dist/filament-auto-translate.css'),
+            Js::make('filament-auto-translate-scripts', __DIR__ . '/../resources/dist/filament-auto-translate.js'),
         ];
     }
 
@@ -112,7 +84,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            SkeletonCommand::class,
+            FilamentAutoTranslateCommand::class,
         ];
     }
 
@@ -146,7 +118,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_skeleton_table',
+            'create_filament-auto-translate_table',
         ];
     }
 }
