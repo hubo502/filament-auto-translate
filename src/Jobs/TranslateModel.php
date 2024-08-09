@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Jobs;
 
 use Darko\AutoTranslate\Contracts\Models\AutoTranslatable;
@@ -40,9 +41,9 @@ class TranslateModel implements ShouldQueue, ShouldBeUnique
         $translator = app(Translator::class);
         $log = $translator->log;
 
-        if ($model instanceof AutoTranslatable) {
+        if ($this->model instanceof AutoTranslatable) {
             $log->notice('[translate model]', ['type' => $this->model::class, 'id' => $this->model->id, 'force' => $this->force]);
-            $model->autoTranslate($force);
+            $this->model->autoTranslate($this->force);
         }
     }
 

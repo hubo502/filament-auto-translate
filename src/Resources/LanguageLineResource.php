@@ -1,8 +1,10 @@
 <?php
+namespace Darko\FilamentAutoTranslate\Resources;
 
 use Darko\AutoTranslate\Contracts\Services\Translator;
 use Darko\AutoTranslate\Models\LanguageLine;
 use Darko\FilamentAutoTranslate\Actions\Table\TranslateLang;
+use Darko\FilamentAutoTranslate\Resources\LanguageLineResource\Pages\ListLanguageLines;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -53,7 +55,7 @@ class LanguageLineResource extends Resource
                     ->required(),
 
                 Section::make('Translations')->schema([
-                    KeyValue::make('text')->default([app(Translator::class)->base_value() => null]),
+                    KeyValue::make('text')->default([app(Translator::class)->base_locale() => null]),
                 ]),
             ]);
     }

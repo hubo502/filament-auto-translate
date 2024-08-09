@@ -1,17 +1,20 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Resources\LanguageLineResource\Pages;
 
-use Darko\FilamentAutoTranslate\Actions\LangDiscover;
-use Darko\FilamentAutoTranslate\Actions\LangPublish;
+use Darko\FilamentAutoTranslate\Actions\DiscoverLang;
+use Darko\FilamentAutoTranslate\Actions\LocaleSwitcher;
+use Darko\FilamentAutoTranslate\Actions\PublishLang;
+use Darko\FilamentAutoTranslate\Actions\TranslateLang;
+use Darko\FilamentAutoTranslate\Resources\LanguageLineResource;
 use Filament\Actions\CreateAction;
-use Filament\Actions\LocaleSwitcher;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
-use LanguageLineResource;
 
 class ListLanguageLines extends ListRecords
 {
     use Translatable;
+
     protected static string $resource = LanguageLineResource::class;
 
     public function getTranslationPreview($record, $maxLength = null)
@@ -31,9 +34,9 @@ class ListLanguageLines extends ListRecords
         return [
             LocaleSwitcher::make(),
             CreateAction::make("create")->outlined(),
-            LangDiscover::make(),
-            LangTranslate::make(),
-            LangPublish::make(),
+            DiscoverLang::make(),
+            TranslateLang::make(),
+            PublishLang::make(),
         ];
     }
 }

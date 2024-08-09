@@ -1,15 +1,15 @@
 {
-    "name": "darko/filament-auto-translate",
+    "name": "xdarko/filament-auto-translate",
     "description": "auto translate for filament",
+    "version": "0.1.1",
     "keywords": [
-        "darko",
         "laravel",
         "filament-auto-translate"
     ],
-    "homepage": "https://github.com/darko/filament-auto-translate",
+    "homepage": "https://github.com/hubo502/filament-auto-translate",
     "support": {
-        "issues": "https://github.com/darko/filament-auto-translate/issues",
-        "source": "https://github.com/darko/filament-auto-translate"
+        "issues": "https://github.com/hubo502/filament-auto-translate/issues",
+        "source": "https://github.com/hubo502/filament-auto-translate"
     },
     "license": "MIT",
     "authors": [
@@ -24,7 +24,7 @@
         "filament/filament": "^3.2",
         "spatie/laravel-package-tools": "^1.16.0",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
-        "darko/laravel-auto-translate": "^0.1"
+        "xdarko/laravel-auto-translate": "^0.1.1"
     },
     "require-dev": {
         "larastan/larastan": "^2.9",
@@ -39,14 +39,6 @@
         "phpstan/phpstan-phpunit": "^1.3",
         "spatie/laravel-ray": "^1.35"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "name": "darko/laravel-auto-translate",
-            "url": "https://github.com/hubo502/laravel-auto-translate",
-            "branch": "0.*"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Darko\\FilamentAutoTranslate\\": "src/",

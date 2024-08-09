@@ -1,14 +1,16 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions\Table;
 
-use Darko\FilamentAutoTranslate\Jobs\TranslateModel as TranslateModelJob;
+use Darko\FilamentAutoTranslate\Jobs\TranslateModel;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelTranslate extends Action
+class Translate extends Action
 {
-    public static function make(?string $name = 'model-translate'): static
+
+    public static function make(?string $name = 'translate'): static
     {
         return parent::make($name);
     }
@@ -26,7 +28,6 @@ class ModelTranslate extends Action
 
     public static function run(Model $record)
     {
-        TranslateModelJob::dispatch($record);
+        TranslateModel::dispatch($record);
     }
-
 }

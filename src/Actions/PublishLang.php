@@ -1,13 +1,15 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions;
 
 use Darko\FilamentAutoTranslate\Services\LangManager;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 
-class LangTranslate extends Action
+class PublishLang extends Action
 {
-    public static function make(?string $name = 'lang-translate'): static
+
+    public static function make(?string $name = 'publish-lang'): static
     {
         return parent::make($name);
     }
@@ -15,8 +17,8 @@ class LangTranslate extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Translate");
-        $this->icon('heroicon-o-language');
+        $this->label("Publish");
+        $this->icon('heroicon-o-printer');
         $this->action(function () {
             static::run();
         });
@@ -24,7 +26,7 @@ class LangTranslate extends Action
 
     public static function run(): void
     {
-        $jobs = LangManager::translate();
-        Notification::make()->title("{$jobs} 个字段翻译中..请勿重复提交。")->success()->send();
+        $published = LangManager::publish();
+        Notification::make()->title("发布了 {$published} 个文件")->success()->send();
     }
 }

@@ -1,13 +1,14 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions;
 
 use Darko\FilamentAutoTranslate\Services\LangManager;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 
-class LangDiscover extends Action
+class DiscoverLang extends Action
 {
-    public static function make(?string $name = 'lang-discover'): static
+    public static function make(?string $name = 'discover-lang'): static
     {
         return parent::make($name);
     }

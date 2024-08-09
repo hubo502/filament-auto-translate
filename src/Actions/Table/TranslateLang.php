@@ -1,11 +1,12 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Actions\Table;
 
 use Darko\AutoTranslate\Models\LanguageLine;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 
-class LangTranslate extends Action
+class TranslateLang extends Action
 {
     public static function make(?string $name = 'lang-translate'): static
     {

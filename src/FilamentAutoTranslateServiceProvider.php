@@ -5,8 +5,6 @@ namespace Darko\FilamentAutoTranslate;
 use Darko\FilamentAutoTranslate\Commands\FilamentAutoTranslateCommand;
 use Darko\FilamentAutoTranslate\Testing\TestsFilamentAutoTranslate;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Livewire\Features\SupportTesting\Testable;
@@ -34,12 +32,12 @@ class FilamentAutoTranslateServiceProvider extends PackageServiceProvider
                     ->publishConfigFile();
             });
 
-        $package->hasConfigFile('lang-manager');
-
+        $package->hasConfigFile('filament-auto-translate');
     }
 
     public function packageRegistered(): void
-    {}
+    {
+    }
 
     public function packageBooted(): void
     {
@@ -73,8 +71,8 @@ class FilamentAutoTranslateServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('filament-auto-translate', __DIR__ . '/../resources/dist/components/filament-auto-translate.js'),
-            Css::make('filament-auto-translate-styles', __DIR__ . '/../resources/dist/filament-auto-translate.css'),
-            Js::make('filament-auto-translate-scripts', __DIR__ . '/../resources/dist/filament-auto-translate.js'),
+            // Css::make('filament-auto-translate-styles', __DIR__ . '/../resources/dist/filament-auto-translate.css'),
+            // Js::make('filament-auto-translate-scripts', __DIR__ . '/../resources/dist/filament-auto-translate.js'),
         ];
     }
 
