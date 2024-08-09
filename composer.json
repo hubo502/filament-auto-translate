@@ -24,7 +24,7 @@
         "filament/filament": "^3.2",
         "spatie/laravel-package-tools": "^1.16.0",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
-        "xdarko/laravel-auto-translate": "^0.1.1"
+        "xdarko/laravel-auto-translate": "^0.1.2"
     },
     "require-dev": {
         "larastan/larastan": "^2.9",
