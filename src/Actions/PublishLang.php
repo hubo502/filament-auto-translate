@@ -17,7 +17,7 @@ class PublishLang extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Publish");
+        $this->label('Publish');
         $this->icon('heroicon-o-printer');
         $this->action(function () {
             static::run();

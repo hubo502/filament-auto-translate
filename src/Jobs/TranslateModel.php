@@ -11,11 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
-class TranslateModel implements ShouldQueue, ShouldBeUnique
+class TranslateModel implements ShouldBeUnique, ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public $uniqueFor = 3600;
 
@@ -29,9 +31,7 @@ class TranslateModel implements ShouldQueue, ShouldBeUnique
     /**
      * Create a new job instance.
      */
-    public function __construct(protected Model $model, protected bool $force = false)
-    {
-    }
+    public function __construct(protected Model $model, protected bool $force = false) {}
 
     /**
      * Execute the job.

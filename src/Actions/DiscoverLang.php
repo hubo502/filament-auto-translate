@@ -16,7 +16,7 @@ class DiscoverLang extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Discover");
+        $this->label('Discover');
         $this->icon('heroicon-o-magnifying-glass-circle');
         $this->action(function () {
             static::run();

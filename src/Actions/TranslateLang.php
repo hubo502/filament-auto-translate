@@ -16,7 +16,7 @@ class TranslateLang extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Translate");
+        $this->label('Translate');
         $this->icon('heroicon-o-language');
         $this->action(function () {
             static::run();

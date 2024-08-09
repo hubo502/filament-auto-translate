@@ -16,11 +16,11 @@ class TranslateLang extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Translate");
+        $this->label('Translate');
         $this->icon('heroicon-s-language');
         $this->action(function (LanguageLine $line) {
             $line->translate();
-            Notification::make()->title("翻译任务已提交")->success()->send();
+            Notification::make()->title('翻译任务已提交')->success()->send();
         });
     }
 }

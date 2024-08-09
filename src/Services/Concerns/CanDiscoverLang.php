@@ -10,7 +10,7 @@ trait CanDiscoverLang
 {
     public static function discover()
     {
-        return static::discoverFromFiles() + static::discoverFromSettings() + static::discoverFromEnums();
+        return static::discoverFromFiles()+static::discoverFromSettings()+static::discoverFromEnums();
     }
 
     public static function discoverFromEnums()
@@ -58,10 +58,11 @@ trait CanDiscoverLang
                 });
             }
         });
+
         return $count;
     }
 
-    public static function discoverFromFiles(string $path = null): int
+    public static function discoverFromFiles(?string $path = null): int
     {
 
         $path = $path ?: base_path();
@@ -71,25 +72,25 @@ trait CanDiscoverLang
         $functions = config("filament-auto-translate.trans_functions");
 
         $groupPattern = // See https://regex101.com/r/WEJqdL/6
-            "[^\w|>]" . // Must not have an alphanum or _ or > before real method
-            '(' . implode('|', $functions) . ')' . // Must start with one of the functions
-            "\(" . // Match opening parenthesis
-            "[\'\"]" . // Match " or '
-            '(' . // Start a new group to match:
-            '[\/a-zA-Z0-9_-]+' . // Must start with group
-            "([.](?! )[^\1)]+)+" . // Be followed by one or more items/keys
-            ')' . // Close group
-            "[\'\"]" . // Closing quote
-            "[\),]"; // Close parentheses or new parameter
+        "[^\w|>]" . // Must not have an alphanum or _ or > before real method
+        '(' . implode('|', $functions) . ')' . // Must start with one of the functions
+        "\(" . // Match opening parenthesis
+        "[\'\"]" . // Match " or '
+        '(' . // Start a new group to match:
+        '[\/a-zA-Z0-9_-]+' . // Must start with group
+        "([.](?! )[^\1)]+)+" . // Be followed by one or more items/keys
+        ')' . // Close group
+        "[\'\"]" . // Closing quote
+        "[\),]"; // Close parentheses or new parameter
 
         $stringPattern =
-            "[^\w]" . // Must not have an alphanum before real method
-            '(' . implode('|', $functions) . ')' . // Must start with one of the functions
-            "\(\s*" . // Match opening parenthesis
-            "(?P<quote>['\"])" . // Match " or ' and store in {quote}
-            "(?P<string>(?:\\\k{quote}|(?!\k{quote}).)*)" . // Match any string that can be {quote} escaped
-            "\k{quote}" . // Match " or ' previously matched
-            "\s*[\),]"; // Close parentheses or new parameter
+        "[^\w]" . // Must not have an alphanum before real method
+        '(' . implode('|', $functions) . ')' . // Must start with one of the functions
+        "\(\s*" . // Match opening parenthesis
+        "(?P<quote>['\"])" . // Match " or ' and store in {quote}
+        "(?P<string>(?:\\\k{quote}|(?!\k{quote}).)*)" . // Match any string that can be {quote} escaped
+        "\k{quote}" . // Match " or ' previously matched
+        "\s*[\),]"; // Close parentheses or new parameter
 
         $finder = new Finder();
         $finder->in($path)->exclude('storage')->exclude('vendor')->name('*.php')->name('*.twig')->name('*.vue')->files();
@@ -127,7 +128,7 @@ trait CanDiscoverLang
 
         foreach ($groupKeys as $key) {
             // Split the group and item
-            list($group, $item) = explode('.', $key, 2);
+            [$group, $item] = explode('.', $key, 2);
             static::missingKey($group, $item);
         }
 

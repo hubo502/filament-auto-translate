@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\FilamentAutoTranslate\Services\Concerns;
 
 use Darko\AutoTranslate\Models\LanguageLine;
@@ -26,7 +27,7 @@ trait CanPublishLang
 
                     $path = $basePath . '/' . $locale . '.json';
                     info('put translation file', ['path' => $path]);
-                    $output = json_encode($translations, \JSON_PRETTY_PRINT  | \JSON_UNESCAPED_UNICODE);
+                    $output = json_encode($translations, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_UNICODE);
                     if ($files->exists($path)) {
                         info('file exists', ['path' => $path]);
                         $files->replace($path, $output);
@@ -40,6 +41,7 @@ trait CanPublishLang
                 }
             }
         }
+
         return $published;
     }
 
@@ -66,5 +68,4 @@ trait CanPublishLang
 
         return $array;
     }
-
 }
