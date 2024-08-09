@@ -33,7 +33,7 @@ class ListLanguageLines extends ListRecords
     {
         return [
             LocaleSwitcher::make(),
-            CreateAction::make("create")->outlined(),
+            CreateAction::make('create')->outlined(),
             DiscoverLang::make(),
             TranslateLang::make(),
             PublishLang::make(),

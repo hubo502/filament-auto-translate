@@ -12,7 +12,7 @@ trait CanPublishLang
         $published = 0;
 
         $group = basename($group);
-        $files = new Filesystem();
+        $files = new Filesystem;
         $basePath = lang_path();
 
         if ($group) {

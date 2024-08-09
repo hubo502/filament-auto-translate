@@ -8,7 +8,6 @@ use Filament\Notifications\Notification;
 
 class PublishLang extends Action
 {
-
     public static function make(?string $name = 'publish-lang'): static
     {
         return parent::make($name);

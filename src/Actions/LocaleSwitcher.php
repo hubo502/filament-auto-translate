@@ -2,9 +2,8 @@
 
 namespace Darko\FilamentAutoTranslate\Actions;
 
-
-use Filament\Actions\SelectAction;
 use Darko\AutoTranslate\Facades\AutoTranslator;
+use Filament\Actions\SelectAction;
 
 class LocaleSwitcher extends SelectAction
 {
@@ -16,13 +15,14 @@ class LocaleSwitcher extends SelectAction
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Language");
+        $this->label('Language');
         $this->setTranslatableLocaleOptions();
     }
 
     public function setTranslatableLocaleOptions(): static
     {
         $this->options(AutoTranslator::locale_options());
+
         return $this;
     }
 }

@@ -10,12 +10,12 @@ trait CanDiscoverLang
 {
     public static function discover()
     {
-        return static::discoverFromFiles()+static::discoverFromSettings()+static::discoverFromEnums();
+        return static::discoverFromFiles() + static::discoverFromSettings() + static::discoverFromEnums();
     }
 
     public static function discoverFromEnums()
     {
-        $finder = new Finder();
+        $finder = new Finder;
         $path = base_path(config('filament-auto-translate.enum_path'));
         $files = $finder->in($path)->files();
         $pattern = 'case \w+ \= \"(\w+)\"';
@@ -69,7 +69,7 @@ trait CanDiscoverLang
 
         $groupKeys = [];
         $stringKeys = [];
-        $functions = config("filament-auto-translate.trans_functions");
+        $functions = config('filament-auto-translate.trans_functions');
 
         $groupPattern = // See https://regex101.com/r/WEJqdL/6
         "[^\w|>]" . // Must not have an alphanum or _ or > before real method
@@ -92,7 +92,7 @@ trait CanDiscoverLang
         "\k{quote}" . // Match " or ' previously matched
         "\s*[\),]"; // Close parentheses or new parameter
 
-        $finder = new Finder();
+        $finder = new Finder;
         $finder->in($path)->exclude('storage')->exclude('vendor')->name('*.php')->name('*.twig')->name('*.vue')->files();
 
         foreach ($finder as $file) {
@@ -115,7 +115,7 @@ trait CanDiscoverLang
                     //TODO: This can probably be done in the regex, but I couldn't do it.
                     //skip keys which contain namespacing characters, unless they also contain a
                     //space, which makes it JSON.
-                    if (!(Str::contains($key, '::') && Str::contains($key, '.')) || Str::contains($key, ' ')) {
+                    if (! (Str::contains($key, '::') && Str::contains($key, '.')) || Str::contains($key, ' ')) {
                         $stringKeys[] = $key;
                     }
                 }

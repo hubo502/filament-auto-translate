@@ -15,13 +15,14 @@ class LocaleSwitcher extends SelectAction
     protected function setUp(): void
     {
         parent::setUp();
-        $this->label("Language");
+        $this->label('Language');
         $this->setTranslatableLocaleOptions();
     }
 
     public function setTranslatableLocaleOptions(): static
     {
         $this->options(AutoTranslator::locale_options());
+
         return $this;
     }
 }

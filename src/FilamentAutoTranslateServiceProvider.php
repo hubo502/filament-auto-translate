@@ -35,9 +35,7 @@ class FilamentAutoTranslateServiceProvider extends PackageServiceProvider
         $package->hasConfigFile('filament-auto-translate');
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {
@@ -56,7 +54,7 @@ class FilamentAutoTranslateServiceProvider extends PackageServiceProvider
         FilamentIcon::register($this->getIcons());
 
         // Testing
-        Testable::mixin(new TestsFilamentAutoTranslate());
+        Testable::mixin(new TestsFilamentAutoTranslate);
     }
 
     protected function getAssetPackageName(): ?string

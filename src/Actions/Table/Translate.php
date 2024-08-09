@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Translate extends Action
 {
-
     public static function make(?string $name = 'translate'): static
     {
         return parent::make($name);
