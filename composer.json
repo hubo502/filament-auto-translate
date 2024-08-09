@@ -1,7 +1,7 @@
 {
     "name": "xdarko/filament-auto-translate",
     "description": "auto translate for filament",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "keywords": [
         "laravel",
         "filament-auto-translate"

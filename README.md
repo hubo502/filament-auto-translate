@@ -14,40 +14,7 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 You can install the package via composer:
 
 ```bash
-composer require darko/filament-auto-translate
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-auto-translate-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-auto-translate-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-auto-translate-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-## Usage
-
-```php
-$filamentAutoTranslate = new Darko\FilamentAutoTranslate();
-echo $filamentAutoTranslate->echoPhrase('Hello, Darko!');
+composer require xdarko/filament-auto-translate
 ```
 
 ## Testing
