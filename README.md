@@ -1,9 +1,9 @@
 # auto translate for filament
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/darko/filament-auto-translate.svg?style=flat-square)](https://packagist.org/packages/darko/filament-auto-translate)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/darko/filament-auto-translate/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/darko/filament-auto-translate/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/darko/filament-auto-translate/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/darko/filament-auto-translate/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/darko/filament-auto-translate.svg?style=flat-square)](https://packagist.org/packages/darko/filament-auto-translate)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/xdarko/filament-auto-translate.svg?style=flat-square)](https://packagist.org/packages/xdarko/filament-auto-translate)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/darko/filament-auto-translate/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/hubo502/filament-auto-translate/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/hubo502/filament-auto-translate/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/hubo502/filament-auto-translate/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/xdarko/filament-auto-translate.svg?style=flat-square)](https://packagist.org/packages/xdarko/filament-auto-translate)
 
 
 
